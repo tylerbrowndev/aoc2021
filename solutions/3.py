@@ -18,14 +18,13 @@ def part1(lines):
   return int(gamma, 2) * int(epsilon, 2)
 
 def part2(lines):
-
   def filter_matrix(a, index, type):
     a_t = [[row[i] for row in a] for i in range(len(a[0]))]
     col = a_t[index]
     zeros = col.count('0')
     ones = len(col) - zeros
     most_frequent = '0' if zeros > ones else '1'
-    b = []      
+    b = []
     for row in a:
       if type == 'generator' and row[index] == most_frequent:
         b.append(row)
@@ -34,7 +33,6 @@ def part2(lines):
     return b
 
   a = [[c for c in line.strip()] for line in lines]
-  a_t = [[row[i] for row in a] for i in range(len(a[0]))]
 
   generator = a
   i = 0
