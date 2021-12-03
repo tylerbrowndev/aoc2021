@@ -19,7 +19,9 @@ def part1(lines):
 
 def part2(lines):
 
-  def filter_matrix(a, col, index, type):
+  def filter_matrix(a, index, type):
+    a_t = [[row[i] for row in a] for i in range(len(a[0]))]
+    col = a_t[index]
     zeros = col.count('0')
     ones = len(col) - zeros
     most_frequent = '0' if zeros > ones else '1'
@@ -35,19 +37,15 @@ def part2(lines):
   a_t = [[row[i] for row in a] for i in range(len(a[0]))]
 
   generator = a
-  generator_t = a_t
   i = 0
-  while len(generator) > 1 and i < len(generator_t):
-    generator = filter_matrix(generator, generator_t[i], i, 'generator')
-    generator_t = [[row[j] for row in generator] for j in range(len(generator[0]))]
+  while len(generator) > 1 and i < len(generator[0]):
+    generator = filter_matrix(generator, i, 'generator')
     i += 1
 
   scrubber = a
-  scrubber_t = a_t
   i = 0
-  while len(scrubber) > 1 and i < len(scrubber_t):
-    scrubber = filter_matrix(scrubber, scrubber_t[i], i, 'scrubber')
-    scrubber_t = [[row[j] for row in scrubber] for j in range(len(scrubber[0]))]
+  while len(scrubber) > 1 and i < len(scrubber[0]):
+    scrubber = filter_matrix(scrubber, i, 'scrubber')
     i += 1
 
   return int(''.join(generator[0]), 2) * int(''.join(scrubber[0]), 2)
