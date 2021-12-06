@@ -39,21 +39,22 @@ def part1(vals):
   return total
 
 def part2(vals):
-  fish_breeding_groups = [0 for _ in range(7)]
+  CYCLE = 7
+  fish_breeding_groups = [0 for _ in range(CYCLE)]
 
   for val in vals:
     fish_breeding_groups[val] += 1
 
   offset = 0
   fish_queue = [0, 0]
-  for i in range(256):
+  for _ in range(256):
     fish_queue.append(fish_breeding_groups[offset])
     fish_breeding_groups[offset] += fish_queue.pop(0)
-    offset = (offset + 1) % 7
+    offset = (offset + 1) % CYCLE
 
   for leftover_fish in fish_queue:
     fish_breeding_groups[offset] += leftover_fish
-    offset = (offset + 1) % 7
+    offset = (offset + 1) % CYCLE
 
   return sum(fish_breeding_groups)
 
