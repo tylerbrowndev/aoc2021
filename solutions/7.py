@@ -13,7 +13,6 @@ def part1(vals):
   return fuel
 
 def part2(vals):
-  vals.sort()
   target = int(round(sum(vals) / (len(vals) * 1.0)))
 
   min_fuel = -1
