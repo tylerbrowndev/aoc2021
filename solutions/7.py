@@ -21,8 +21,7 @@ def part2(vals):
     fuel = 0
     for val in vals:
       diff = abs(val - i)
-      for j in range(diff + 1):
-        fuel += j
+      fuel += sum(range(diff + 1))
     if min_fuel == -1 or fuel < min_fuel:
       min_fuel = fuel
   return min_fuel
