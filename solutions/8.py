@@ -22,39 +22,39 @@ def part2(lines):
       mystery_val = { c for c in partial_input }
       l = len(mystery_val)
       if l == 2:
-        val_dict[1] = mystery_val
+        val_dict['1'] = mystery_val
       elif l == 3:
-        val_dict[7] = mystery_val
+        val_dict['7'] = mystery_val
       elif l == 4:
-        val_dict[4] = mystery_val
+        val_dict['4'] = mystery_val
       elif l == 5:
         # must be 2, 3, or 5
-        if mystery_val.intersection(val_dict[7]) == val_dict[7]:
-          val_dict[3] = mystery_val
-        elif len(mystery_val.intersection(val_dict[4])) == 2:
-          val_dict[2] = mystery_val
+        if mystery_val.intersection(val_dict['7']) == val_dict['7']:
+          val_dict['3'] = mystery_val
+        elif len(mystery_val.intersection(val_dict['4'])) == 2:
+          val_dict['2'] = mystery_val
         else:
-          val_dict[5] = mystery_val
+          val_dict['5'] = mystery_val
       elif l == 6:
         # must be 0, 6, or 9
-        if mystery_val.intersection(val_dict[4]) == val_dict[4]:
-          val_dict[9] = mystery_val
-        elif mystery_val.intersection(val_dict[7]) == val_dict[7]:
-          val_dict[0] = mystery_val
+        if mystery_val.intersection(val_dict['4']) == val_dict['4']:
+          val_dict['9'] = mystery_val
+        elif mystery_val.intersection(val_dict['7']) == val_dict['7']:
+          val_dict['0'] = mystery_val
         else:
-          val_dict[6] = mystery_val
+          val_dict['6'] = mystery_val
       else:
-        val_dict[8] = mystery_val
+        val_dict['8'] = mystery_val
 
     partial_outputs = output.split()
-    code = [-1, -1, -1, -1]
+    code = ['', '', '', '']
     for i in range(len(partial_outputs)):
-      key = -1
+      key = ''
       val = partial_outputs[i]
       for k, v in val_dict.items():
         if v == { c for c in val }:
           key = k
-      code[i] = str(key)
+      code[i] = key
     codes.append(int(''.join(code)))
   return sum(codes)
 
