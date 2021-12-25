@@ -34,7 +34,7 @@ def part1(x_min, x_max, y_min, y_max):
 
   for x_velocity in range(x_start_velocity - 1, x_max + 1):
     y = y_min
-    while y < 1000:
+    while y < 150:
       val = hits_target(x_velocity, y)
       if val >= 0:
         if val > highest_y:
@@ -64,7 +64,7 @@ def part2(x_min, x_max, y_min, y_max):
 
   for x_velocity in range(x_start_velocity - 1, x_max + 1):
     y_velocity = y_min
-    while y_velocity < 1000:
+    while y_velocity < 150:
       if hits_target(x_velocity, y_velocity):
         successful_velocities += 1
       y_velocity += 1
